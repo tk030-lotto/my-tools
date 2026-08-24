@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tools — AIと一緒に作った公開ツールカタログ</title>
+  <meta name="description" content="AIと一緒に作った公開ツールのカタログサイトです。小さな面倒を減らすツールやAI開発支援ツールをまとめています。ソースコードはGitHub、解説はnoteをご覧ください。">
+  
+  <!-- OGP & Twitter Cards -->
+  <meta property="og:title" content="My Tools — AIと一緒に作った公開ツールカタログ">
+  <meta property="og:description" content="AIと一緒に作った公開ツールのカタログサイトです。GitHubとnoteへ直接アクセスできます。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://assets.st-note.com/production/uploads/images/296872352/ce71b7f267b987408937f876e7c147bd.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="site-container">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-badge">
+          <span class="status-indicator"></span>
+          <span>PUBLIC CATALOG</span>
+        </div>
+        <h1 class="site-title">My Tools</h1>
+        <p class="site-subtitle">AIと一緒に作った公開ツールをまとめています。</p>
+        <p class="site-description">
+          小さな面倒を減らすために作ったツールや、AI開発を支援するツールを公開しています。<br>
+          詳しい解説・開発ストーリーは <strong>note</strong>、ソースコードは <strong>GitHub</strong> をご覧ください。
+        </p>
+
+        <div class="header-links">
+          <a href="https://note.com/zero_ai_dev/m/m94b759b541f6" target="_blank" rel="noopener noreferrer" class="link-chip note-chip">
+            <svg class="chip-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+            </svg>
+            <span>note マガジン</span>
+          </a>
+          <a href="https://github.com/tk030-lotto" target="_blank" rel="noopener noreferrer" class="link-chip github-chip">
+            <svg class="chip-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>GitHub Profile</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Controls / Filters -->
+    <section class="controls-section">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="ツール名、キーワード、タグで検索..." aria-label="ツール検索">
+        <button id="searchClearBtn" class="search-clear-btn" aria-label="検索クリア" style="display: none;">&times;</button>
+      </div>
+
+      <div class="category-tabs" id="categoryTabs" role="tablist">
+        <button class="tab-btn active" data-category="ALL" role="tab" aria-selected="true">
+          すべて <span class="tab-count" id="count-all">0</span>
+        </button>
+        <button class="tab-btn" data-category="AI開発" role="tab" aria-selected="false">
+          AI開発 <span class="tab-count" id="count-ai">0</span>
+        </button>
+        <button class="tab-btn" data-category="開発支援" role="tab" aria-selected="false">
+          開発支援 <span class="tab-count" id="count-dev">0</span>
+        </button>
+        <button class="tab-btn" data-category="ファイル・PC" role="tab" aria-selected="false">
+          ファイル・PC <span class="tab-count" id="count-file">0</span>
+        </button>
+        <button class="tab-btn" data-category="その他" role="tab" aria-selected="false">
+          その他 <span class="tab-count" id="count-other">0</span>
+        </button>
+      </div>
+
+      <div class="results-meta">
+        <div class="meta-count">
+          表示中: <span id="visibleCount" class="highlight-num">0</span> / <span id="totalCount">0</span> 件
+        </div>
+        <div class="sort-selector">
+          <label for="sortSelect">並び順:</label>
+          <select id="sortSelect">
+            <option value="newest">公開日（新しい順）</option>
+            <option value="name">名前順 (A-Z)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tool Grid -->
+    <main class="main-content">
+      <div id="toolGrid" class="tool-grid" aria-live="polite">
+        <!-- Javascript dynamically renders cards here -->
+      </div>
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>該当するツールが見つかりませんでした</h3>
+        <p>検索キーワードを変更するか、カテゴリを「すべて」に戻してお試しください。</p>
+        <button id="resetFilterBtn" class="reset-btn">条件をリセット</button>
+      </div>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button id="modalCloseBtn" class="modal-close-btn" aria-label="閉じる">&times;</button>
+        <div id="modalBody" class="modal-body">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-concept">
+          <div class="concept-item">
+            <span class="concept-role">GitHub</span>
+            <span class="concept-desc">実物 (ソースコード)</span>
+          </div>
+          <span class="concept-arrow">×</span>
+          <div class="concept-item">
+            <span class="concept-role">note</span>
+            <span class="concept-desc">物語 (開発経緯・解説)</span>
+          </div>
+          <span class="concept-arrow">×</span>
+          <div class="concept-item highlight">
+            <span class="concept-role">GitHub Pages</span>
+            <span class="concept-desc">目録 (カタログ・入口)</span>
+          </div>
+        </div>
+        <p class="copyright">&copy; 2026 ZERO / tk030. Built with Vanilla Web &amp; Zero-Dependency.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
