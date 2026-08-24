@@ -213,7 +213,7 @@
   }
 
   /**
-   * Render Cards
+   * Render Compact Cards
    */
   function render() {
     const filtered = getFilteredTools();
@@ -231,74 +231,64 @@
       const catClass = getCategoryClass(tool.category);
       const hasWeb = !!tool.web_url;
 
-      // Media HTML
-      const mediaHtml = tool.eyecatch
-        ? `<img src="${escapeHtml(tool.eyecatch)}" alt="${escapeHtml(tool.name)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-media-placeholder\\'>${escapeHtml(tool.name)}</div>'">`
-        : `<div class="card-media-placeholder">${escapeHtml(tool.category)} / ${escapeHtml(tool.name)}</div>`;
-
-      // Tags HTML
+      // Tags HTML (show top 2-3 tags for brevity)
       const tagsHtml = (tool.tags || [])
+        .slice(0, 3)
         .map(t => `<span class="tag-badge">#${escapeHtml(t)}</span>`)
         .join('');
 
       return `
         <article class="tool-card" data-id="${escapeHtml(tool.id)}">
-          <div class="card-media">
-            ${mediaHtml}
-            <div class="card-header-top">
-              <span class="badge-category ${catClass}">${escapeHtml(tool.category)}</span>
-            </div>
-            <button class="btn-detail" onclick="window.showToolDetail('${escapeHtml(tool.id)}')" aria-label="${escapeHtml(tool.name)}の詳細を見る" title="詳細を見る">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          <div class="card-top-bar">
+            <span class="badge-category ${catClass}">${escapeHtml(tool.category)}</span>
+            <button class="btn-detail-text" onclick="window.showToolDetail('${escapeHtml(tool.id)}')" aria-label="${escapeHtml(tool.name)}の詳細を見る">
+              <span>詳細・解説</span>
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>
           </div>
 
-          <div class="card-content">
-            <div class="card-title-group">
-              <h2 class="card-title">${escapeHtml(tool.name)}</h2>
-              ${tool.subtitle ? `<span class="card-subtitle">${escapeHtml(tool.subtitle)}</span>` : ''}
-            </div>
+          <div class="card-title-group">
+            <h2 class="card-title">${escapeHtml(tool.name)}</h2>
+            ${tool.subtitle ? `<span class="card-subtitle">${escapeHtml(tool.subtitle)}</span>` : ''}
+          </div>
 
-            <p class="card-description">${escapeHtml(tool.description)}</p>
+          <p class="card-description">${escapeHtml(tool.description)}</p>
 
-            <div class="card-tags">
-              ${tagsHtml}
-            </div>
+          <div class="card-tags">
+            ${tagsHtml}
+          </div>
 
-            <div class="card-actions ${hasWeb ? 'has-web' : ''}">
-              ${tool.github_url ? `
-                <a href="${escapeHtml(tool.github_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-github">
-                  <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-                  </svg>
-                  <span>GitHub</span>
-                </a>
-              ` : ''}
+          <div class="card-actions">
+            ${tool.github_url ? `
+              <a href="${escapeHtml(tool.github_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-github" title="ソースコード (GitHub)">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+            ` : ''}
 
-              ${tool.note_url ? `
-                <a href="${escapeHtml(tool.note_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-note">
-                  <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                  </svg>
-                  <span>note 記事</span>
-                </a>
-              ` : ''}
+            ${tool.note_url ? `
+              <a href="${escapeHtml(tool.note_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-note" title="解説記事 (note)">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+                <span>note</span>
+              </a>
+            ` : ''}
 
-              ${hasWeb ? `
-                <a href="${escapeHtml(tool.web_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-web">
-                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  <span>Web版を開く</span>
-                </a>
-              ` : ''}
-            </div>
+            ${hasWeb ? `
+              <a href="${escapeHtml(tool.web_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-web" title="Webアプリを開く">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Web版</span>
+              </a>
+            ` : ''}
           </div>
         </article>
       `;
@@ -321,7 +311,14 @@
       .map(t => `<span class="tag-badge">#${escapeHtml(t)}</span>`)
       .join('');
 
+    const mediaHtml = tool.eyecatch ? `
+      <div class="modal-media">
+        <img src="${escapeHtml(tool.eyecatch)}" alt="${escapeHtml(tool.name)}" loading="lazy">
+      </div>
+    ` : '';
+
     modalBody.innerHTML = `
+      ${mediaHtml}
       <div class="modal-header-section">
         <div>
           <span class="badge-category ${catClass}">${escapeHtml(tool.category)}</span>
@@ -361,7 +358,7 @@
 
       <div class="modal-actions">
         ${tool.web_url ? `
-          <a href="${escapeHtml(tool.web_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-web" style="grid-column: auto; flex: 1;">
+          <a href="${escapeHtml(tool.web_url)}" target="_blank" rel="noopener noreferrer" class="btn-link btn-web" style="flex: 1;">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
@@ -375,7 +372,7 @@
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
             </svg>
-            <span>GitHubで見る</span>
+            <span>GitHub</span>
           </a>
         ` : ''}
         ${tool.note_url ? `
@@ -383,7 +380,7 @@
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
             </svg>
-            <span>note記事を読む</span>
+            <span>note記事</span>
           </a>
         ` : ''}
       </div>
