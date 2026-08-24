@@ -10,10 +10,17 @@ sync_tools.py - noteマガジンおよび公開情報からツール一覧（too
 import json
 import os
 import re
+import sys
 import urllib.request
 
+# Fix Windows console encoding if needed
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 MAGAZINE_API_URL = "https://note.com/api/v1/magazines/m94b759b541f6/notes"
-CREATOR_CONTENTS_API_URL = "https://note.com/api/v2/creators/zero_ai_dev/contents?kind=note&page=1"
 DATA_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "tools.json")
 
 # 除外キーワード（ロト系、メンバーシップ、未公開・凍結など）
@@ -68,17 +75,18 @@ def sync():
             continue
 
         if is_excluded(title, body):
-            print(f"[SKIP/除外キーワード] {title}")
+            print(f"[SKIP/除外対象(ロト・凍結)] {title}")
             continue
 
         if note_url not in existing_notes:
-            print(f"[NEW] 新規掲載候補を検知: {title} ({note_url})")
+            print(f"[NEW] 新規掲載候補を検知: {title}")
+            print(f"      URL: {note_url}")
             new_item = {
                 "id": f"tool-{len(current_data) + 1}",
                 "name": title,
                 "subtitle": "",
                 "category": "AI開発",
-                "description": body[:120] if body else f"{title}の紹介",
+                "description": body[:100] if body else f"{title}の紹介",
                 "why": "",
                 "features": [],
                 "github_url": "",
@@ -95,7 +103,7 @@ def sync():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(current_data, f, ensure_ascii=False, indent=2)
 
-    print(f"[SYNC] 完了: 新規追加 {added_count} 件 (合計 {len(current_data)} 件)")
+    print(f"[SYNC] 同期完了: 新規追加 {added_count} 件 (合計 {len(current_data)} 件)")
 
 if __name__ == "__main__":
     sync()
