@@ -4,6 +4,8 @@
 - **プロジェクト名**: 公開ツール一覧サイト (My Tools)
 - **種別**: 静的Webアプリケーション / カタログツール
 - **作成日**: 2026-08-24
+- **リポジトリURL**: [https://github.com/tk030-lotto/my-tools](https://github.com/tk030-lotto/my-tools)
+- **公開Webサイト (GitHub Pages)**: [https://tk030-lotto.github.io/my-tools/](https://tk030-lotto.github.io/my-tools/)
 - **技術構成**: Zero-Dependency (Vanilla HTML5, CSS3, ES6 JavaScript, JSON)
 - **対象環境**: GitHub Pages / ローカルWebブラウザ (Chrome, Edge, Safari等)
 
