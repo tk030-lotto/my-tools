@@ -1,10 +1,13 @@
 @echo off
-title My Tools - ���[�J���v���r���[
+chcp 65001 > nul
+title My Tools - ローカルプレビューサーバー
 
 echo ========================================================
-echo   My Tools �J�^���O�T�C�g�����[�J���ŋN�����Ă��܂�...
-echo   �u���E�U�� http://localhost:8085 ���J���܂�
+echo   My Tools カタログサイトをローカルで起動しています...
+echo   ブラウザで http://localhost:8085 を開きます
 echo ========================================================
+echo.
+echo [サーバー停止方法] このウィンドウを閉じるか Ctrl + C を押してください。
 echo.
 
 start "" "http://localhost:8085"

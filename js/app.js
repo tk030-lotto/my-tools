@@ -204,7 +204,9 @@
       })
       .sort((a, b) => {
         if (currentSort === 'newest') {
-          return (b.release_date || '').localeCompare(a.release_date || '');
+          const dateA = a.release_date || '1970-01-01';
+          const dateB = b.release_date || '1970-01-01';
+          return dateB.localeCompare(dateA);
         } else if (currentSort === 'name') {
           return (a.name || '').localeCompare(b.name || '', 'ja');
         }
