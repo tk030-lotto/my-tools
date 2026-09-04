@@ -52,8 +52,9 @@
 | [`js/app.js`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/js/app.js) | インクリメンタル検索、カテゴリタブ切り替え、新着順ソート、詳細モーダル |
 | [`data/tools.json`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/data/tools.json) | ツールマスターデータ（現在14件登録済み） |
 | [`scripts/sync_tools.py`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/scripts/sync_tools.py) | noteマガジンから最新記事・URLを自動取得・同期するスクリプト |
-| [`記事同期.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/記事同期.bat) | ワンクリック同期バッチ（UTF-8文字化け対策済み） |
-| [`サイト確認.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/サイト確認.bat) | ローカルプレビューサーバー起動バッチ（UTF-8対応） |
+| [`記事同期.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/記事同期.bat) | ワンクリック同期バッチ（Shift-JIS / CP932 エンコーディング） |
+| [`サイト確認.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/サイト確認.bat) | ローカルプレビューサーバー起動バッチ（Shift-JIS / CP932 エンコーディング） |
+| [`favicon.ico`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/favicon.ico) | サイトアイコン（32x32 / 16x16 ICO） |
 | [`README.md`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/README.md) | GitHub Pages公開手順およびデータ追加ガイド |
 | [`RECORD.md`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/RECORD.md) | 本開発記録ドキュメント |
 
@@ -79,6 +80,13 @@
 ---
 
 ## 🎨 改修・改善履歴
+
+### 第4版 (2026-09-04): バッチファイルのエンコーディング修正（Shift-JIS）および favicon.ico の配置
+- **バッチファイルの文字コード抜本修正**:
+  - `サイト確認.bat` および `記事同期.bat` が UTF-8（BOM付き）で保存されていたため、Windows の `cmd.exe` 起動時に不正なコマンドエラー（`'U縺・echo'` 等）が発生していた問題を解消。
+  - プロトコル（AGENTS.md）の規定に準拠し、BOMなし **Shift-JIS (CP932)** エンコーディングへ変換。不要な `chcp 65001` を削除し、cmd.exe での完全な日本語表示を実現。
+- **favicon.ico 配置**:
+  - ローカルサーバー起動時およびブラウザ閲覧時の 404 エラーを解消するため、ミニマルダークUIに調和する `favicon.ico` を生成・配置し、`index.html` に `<link rel="icon">` を追加。
 
 ### 第3版 (2026-08-28): 記事同期バッチ・サイト確認バッチの不具合修復とデータ完全化
 - **同期スクリプト (`sync_tools.py`) の抜本改修**:
