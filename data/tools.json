@@ -1,5 +1,104 @@
 [
   {
+    "id": "hikitsuide-miyou-tool",
+    "name": "「引き継いでみよう。」",
+    "subtitle": "AIを変えても、開発は続けられる",
+    "category": "AI開発",
+    "description": "AI（ChatGPT・Claude・Gemini等）を切り替えたり新しいチャットへ移行する際に、「これまで何を作ったか」を最初から説明し直す面倒を減らす開発引き継ぎ支援ツール。",
+    "why": "AIツールを切り替える際やチャット履歴が肥大化してリフレッシュしたい時に、開発コンテキストや進捗状況を再説明する手間を削減するため。",
+    "features": [
+      "開発コンテキストの要約・引き継ぎプロンプト生成",
+      "仕様・進捗・注意点をワンクリックでコピー可能",
+      "ブラウザ完結（インストール・登録不要で即座に利用可能）"
+    ],
+    "github_url": "https://github.com/tk030-lotto/hikitsuide-miyou-tool",
+    "web_url": "https://tk030-lotto.github.io/hikitsuide-miyou-tool/",
+    "note_url": "https://note.com/zero_ai_dev/n/n76c9df6ca297",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/310106856/rectangle_large_type_2_e6cc863e1ad93efbdacfa1e9a7ff56e5.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-04",
+    "status": "公開中"
+  },
+  {
+    "id": "kokai-shitemiyou-tool",
+    "name": "「公開してみよう。」せっかく作ったなら、GitHubで公開してみる",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "🔗 公開Webツール（GitHub Pages）： https://tk030-lotto.github.io/kokai-shitemiyou-tool/ サンプル画像 AIを使ってソフトウェアを作った。 動いた。 自分でも使える。 ここ...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/kokai-shitemiyou-tool",
+    "web_url": "https://tk030-lotto.github.io/kokai-shitemiyou-tool/",
+    "note_url": "https://note.com/zero_ai_dev/n/n514c79b20c95",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/309162937/rectangle_large_type_2_380c27bc2f5ea65f77ec153ff0e9997f.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-01",
+    "status": "公開中"
+  },
+  {
+    "id": "mou-ikkai-tsukutte-miyou",
+    "name": "「もう一回作ってみよう。」AI開発で行き詰まったら、作り直すという選択肢",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "▼ ツールはこちら（無料・ブラウザで利用可能） https://tk030-lotto.github.io/mou-ikkai-tsukutte-miyou/ サンプル画像 AIを使ってソフトウェアを作っていると、うまくいかないことがありま...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/mou-ikkai-tsukutte-miyou",
+    "web_url": "https://tk030-lotto.github.io/mou-ikkai-tsukutte-miyou/",
+    "note_url": "https://note.com/zero_ai_dev/n/n57d367060d1e",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/308354290/rectangle_large_type_2_34963e74c112d00238e2413dac83aea8.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-08-30",
+    "status": "公開中"
+  },
+  {
+    "id": "recipe-quantity-calculator",
+    "name": "レシピの分量変更、もう計算しなくていい。CookScaleを作りました",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "人数を変えるだけで、料理に使いやすい分量に自動変換 👉 CookScale（Webツール・無料・登録不要） https://tk030-lotto.github.io/recipe-quantity-calculator/ サンプル画像 料...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/recipe-quantity-calculator",
+    "web_url": "https://tk030-lotto.github.io/recipe-quantity-calculator/",
+    "note_url": "https://note.com/zero_ai_dev/n/n6f431e0cc30d",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/308350342/rectangle_large_type_2_ec90962c2590e0078ad253c25755ab59.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-08-30",
+    "status": "公開中"
+  },
+  {
+    "id": "tsugi-ni-nani-suru",
+    "name": "「次に何する？」AI開発で迷ったときに、次の一歩を決める小さなツール",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "▼ ツールはこちら（ブラウザですぐに使えます・インストール不要） https://tk030-lotto.github.io/tsugi-ni-nani-suru/ サンプル画像 AIを使ってソフトウェアを作っていると、意外と困ることがあり...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/tsugi-ni-nani-suru",
+    "web_url": "https://tk030-lotto.github.io/tsugi-ni-nani-suru/",
+    "note_url": "https://note.com/zero_ai_dev/n/n8348bfd0b687",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/308034972/rectangle_large_type_2_6548d01d6d75fb8792c7936e3898e728.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-08-29",
+    "status": "公開中"
+  },
+  {
     "id": "korede-iino",
     "name": "「これでいいの？」",
     "subtitle": "AI生成物 動作確認・受入チェックリスト生成アシスタント",

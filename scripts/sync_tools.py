@@ -32,9 +32,9 @@ NOTE_DETAIL_API_BASE = "https://note.com/api/v3/notes"
 DATA_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "tools.json")
 
 # 除外キーワード（ロト系、メンバーシップ、未公開・凍結など）
-EXCLUDE_KEYWORDS = [
-    "ビンゴ5", "ナンバーズ", "ロト", "LOTO", "NUMBERS", "BINGO",
-    "メンバーシップ", "会員限定", "凍結", "アーカイブ"
+EXCLUDE_KEYWORDS_TITLE = [
+    "ビンゴ5", "ナンバーズ", "NUMBERS", "BINGO",
+    "メンバーシップ限定", "会員限定", "凍結", "アーカイブ"
 ]
 
 def fetch_json(url):
@@ -58,10 +58,25 @@ def fetch_note_detail(key):
 
 def is_excluded(title, body=""):
     """除外対象かどうかの判定"""
-    combined = f"{title} {body}"
-    for kw in EXCLUDE_KEYWORDS:
-        if kw in combined:
+    # 1. タイトルの除外判定
+    for kw in EXCLUDE_KEYWORDS_TITLE:
+        if kw in title:
             return True
+
+    # タイトルのロト判定（「プロトコル」「プロトタイプ」等の誤爆を回避）
+    if re.search(r'(?<!プ)ロト(?!コル|タイプ)', title):
+        return True
+
+    # 2. 本文の除外判定（宝くじ関連の文脈のみ除外）
+    if body:
+        # ロトくじ判定（「当選」「買い目」「くじ」「予想」と共起する場合のみ）
+        if re.search(r'(?<!プ)ロト(?!コル|タイプ)', body) and re.search(r'当選|買い目|くじ|予想', body):
+            return True
+        if re.search(r'ビンゴ5|ナンバーズ', body) and re.search(r'当選|買い目|くじ|予想', body):
+            return True
+        if "メンバーシップ限定記事" in body:
+            return True
+
     return False
 
 def extract_urls_from_body(body):
@@ -207,10 +222,18 @@ def sync():
         if not description:
             description = f"{title} の紹介"
 
+        # タイトルとサブタイトルの分離（「...」形式の場合）
+        item_name = title
+        item_subtitle = ""
+        m_title = re.match(r'^(「[^」]+」)(.*)$', title)
+        if m_title:
+            item_name = m_title.group(1).strip()
+            item_subtitle = m_title.group(2).strip()
+
         new_item = {
             "id": tool_id,
-            "name": title,
-            "subtitle": "",
+            "name": item_name,
+            "subtitle": item_subtitle,
             "category": "AI開発",
             "description": description,
             "why": "",
@@ -228,8 +251,11 @@ def sync():
         existing_by_note[note_url] = new_item
         existing_by_id[tool_id] = new_item
         added_count += 1
-        print(f"[NEW] 追加完了: {title}")
+        print(f"[NEW] 追加完了: {item_name} {item_subtitle}")
         print(f"      ID: {tool_id} | Web: {web_url or '(なし)'} | GitHub: {github_url or '(なし)'} | 公開日: {release_date}")
+
+    # 常に公開日（release_date）の降順（新着順）でソート
+    current_data.sort(key=lambda x: x.get("release_date") or "1970-01-01", reverse=True)
 
     # UTF-8 で tools.json に保存
     with open(DATA_FILE, "w", encoding="utf-8") as f:
