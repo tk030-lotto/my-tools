@@ -266,5 +266,17 @@ def sync():
     print(f"  データ保存先: {DATA_FILE}")
     print("========================================================")
 
+    # SEO構造化データおよびsitemap.xmlの自動同期
+    try:
+        import sys
+        scripts_dir = os.path.dirname(os.path.abspath(__file__))
+        if scripts_dir not in sys.path:
+            sys.path.insert(0, scripts_dir)
+        from update_seo import run as run_update_seo
+        print()
+        run_update_seo()
+    except Exception as e:
+        print(f"[WARN] SEO自動同期エラー: {e}")
+
 if __name__ == "__main__":
     sync()
