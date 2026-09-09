@@ -58,6 +58,7 @@
 | [`記事同期.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/記事同期.bat) | ワンクリック同期バッチ（Shift-JIS / CP932 エンコーディング） |
 | [`サイト確認.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/サイト確認.bat) | ローカルプレビューサーバー起動バッチ（Shift-JIS / CP932 エンコーディング） |
 | [`favicon.ico`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/favicon.ico) | サイトアイコン（32x32 / 16x16 ICO） |
+| [`google0d3408f8f04e8e75.html`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/google0d3408f8f04e8e75.html) | Google Search Console サイト所有権確認用HTMLファイル |
 | [`README.md`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/README.md) | GitHub Pages公開手順およびデータ追加ガイド |
 | [`RECORD.md`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/RECORD.md) | 本開発記録ドキュメント |
 
@@ -112,6 +113,8 @@
 - **Zero-Dependency・UI完全非破壊の維持とヘッダー適正化**:
   - CSS、`app.js` には一切変更を加えず、既存の操作感とミニマルダークデザインを100%維持。
   - ヘッダー内の旧キャッチコピー（`「面倒だったから、作ってみた。」`）を削除し、タイトルとサブタイトルの直結構造へ適正化。
+- **Google Search Console サイト所有権確認ファイルの配置**:
+  - `google0d3408f8f04e8e75.html` をルートディレクトリに配置し、Search Console でのHTMLファイル認証を可能に。
 
 ### 第4版 (2026-09-04): バッチファイルのエンコーディング修正（Shift-JIS）および favicon.ico の配置
 - **バッチファイルの文字コード抜本修正**:
@@ -136,6 +139,8 @@
 ---
 
 ## 🧪 検証記録
+- **総合コードレビュー**: `app.js`、`update_seo.py`、`sync_tools.py`、`index.html`、`data/tools.json` に対するバグ・セキュリティ（XSS対策、正規表現安全性、ID一意性）の徹底監査を実施。深刻な問題なしを確認 ✅
+- **Google Search Console認証ファイル**: ルート直下に `google0d3408f8f04e8e75.html` を配置し、認証トークンが正常に配備されていることを確認 ✅
 - **スクリプト同期テスト**: `python scripts/sync_tools.py` 実行でロト系7件が正確にスキップされ、14件のツール情報が整合性を持って保存されることを確認 ✅
 - **バッチファイル検証**:
   - `記事同期.bat`: コンソール文字化けなく正常終了 ✅
