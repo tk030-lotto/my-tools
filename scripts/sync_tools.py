@@ -266,17 +266,23 @@ def sync():
     print(f"  データ保存先: {DATA_FILE}")
     print("========================================================")
 
-    # SEO構造化データおよびsitemap.xmlの自動同期
+    # SEO構造化データ（JSON-LD）および sitemap.xml の自動同期
     try:
-        import sys
-        scripts_dir = os.path.dirname(os.path.abspath(__file__))
-        if scripts_dir not in sys.path:
-            sys.path.insert(0, scripts_dir)
-        from update_seo import run as run_update_seo
-        print()
-        run_update_seo()
-    except Exception as e:
-        print(f"[WARN] SEO自動同期エラー: {e}")
+        from update_seo import main as update_seo_main
+        print("\n[SEO] SEOメタデータ（JSON-LD / sitemap.xml）の自動同期を開始します...")
+        update_seo_main()
+    except Exception:
+        import importlib.util
+        seo_script_path = os.path.join(os.path.dirname(__file__), "update_seo.py")
+        if os.path.exists(seo_script_path):
+            spec = importlib.util.spec_from_file_location("update_seo", seo_script_path)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            print("\n[SEO] SEOメタデータ（JSON-LD / sitemap.xml）の自動同期を開始します...")
+            mod.main()
+        else:
+            print("[WARN] update_seo.py が見つかりませんでした。SEO同期をスキップします。")
 
 if __name__ == "__main__":
     sync()
+

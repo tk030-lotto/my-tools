@@ -47,11 +47,14 @@
 
 | ファイルパス | 役割・内容 |
 | :--- | :--- |
-| [`index.html`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/index.html) | メイン画面（セマンティックHTML、OGP、レスポンシブ） |
+| [`index.html`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/index.html) | メイン画面（セマンティックHTML、OGP、JSON-LD ItemList静的埋め込み） |
 | [`css/style.css`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/css/style.css) | ミニマル・ダークUI（#09090b 背景、#121215 カード、Interフォント） |
 | [`js/app.js`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/js/app.js) | インクリメンタル検索、カテゴリタブ切り替え、新着順ソート、詳細モーダル |
-| [`data/tools.json`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/data/tools.json) | ツールマスターデータ（現在14件登録済み） |
-| [`scripts/sync_tools.py`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/scripts/sync_tools.py) | noteマガジンから最新記事・URLを自動取得・同期するスクリプト |
+| [`data/tools.json`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/data/tools.json) | ツールマスターデータ（原本 / 現在20件登録済み） |
+| [`scripts/sync_tools.py`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/scripts/sync_tools.py) | noteマガジンから最新記事を取得し、SEO自動同期まで一括実行するスクリプト |
+| [`scripts/update_seo.py`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/scripts/update_seo.py) | tools.json から index.html の JSON-LD と sitemap.xml を自動生成・同期するスクリプト |
+| [`robots.txt`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/robots.txt) | 検索エンジンのクロール制御・サイトマップURL指定 |
+| [`sitemap.xml`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/sitemap.xml) | 検索エンジン向けサイトマップ（トップページ1URL / lastmod自動同期） |
 | [`記事同期.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/記事同期.bat) | ワンクリック同期バッチ（Shift-JIS / CP932 エンコーディング） |
 | [`サイト確認.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/サイト確認.bat) | ローカルプレビューサーバー起動バッチ（Shift-JIS / CP932 エンコーディング） |
 | [`favicon.ico`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/favicon.ico) | サイトアイコン（32x32 / 16x16 ICO） |
@@ -60,9 +63,10 @@
 
 ---
 
-## 📋 登録済み公開ツール（現在 19件）
+## 📋 登録済み公開ツール（現在 20件）
 
-1. **「引き継いでみよう。」**（公開日: 2026-09-04 / カテゴリ: AI開発 / Web版あり）
+1. **ロト＆ナンバーズ 統合構造解析・出目表可視化ツール**（公開日: 2026-09-06 / カテゴリ: その他 / Web版あり）
+2. **「引き継いでみよう。」**（公開日: 2026-09-04 / カテゴリ: AI開発 / Web版あり）
 2. **「公開してみよう。」**（公開日: 2026-09-01 / カテゴリ: AI開発 / Web版あり）
 3. **「もう一回作ってみよう。」**（公開日: 2026-08-30 / カテゴリ: AI開発 / Web版あり）
 4. **レシピの分量変更、もう計算しなくていい。CookScaleを作りました**（公開日: 2026-08-30 / カテゴリ: AI開発 / Web版あり）
@@ -95,6 +99,18 @@
   - 公開日（`release_date`）の降順での自動ソート処理を追加。
 - **最新ツール同期完了**:
   - 2026-09-04 公開の最新作 **「引き継いでみよう。」**（Web版・GitHub連携）を正常に同期・追加（全19件）。
+
+### 第5版 (2026-09-09): 掲載基準改定（20ツール化）・SEO構造化データ自動同期パイプライン（update_seo.py）の構築
+- **掲載基準の改定とロトツール追加**:
+  - Xでの反響（1,100超インプレッション）を受け、当選予想ではなく過去データの統計・構造解析・可視化を目的とするOSSツールである『ロト＆ナンバーズ 統合構造解析・出目表可視化ツール』を正式掲載（全20ツール化）。
+- **原本一元化（Single Source of Truth）によるSEO自動同期**:
+  - `data/tools.json` を唯一の原本とし、`scripts/update_seo.py` を開発。
+  - `index.html` の `<head>` 内に単一の `<script type="application/ld+json" id="seo-jsonld">`（WebSite + 全20ツールの ItemList）を静的に埋め込み・自動置換する処理を実装。
+  - `sitemap.xml`（トップページ1URL固定）の `lastmod` を自動更新。
+- **同期バッチ（記事同期.bat）との完全連動**:
+  - `scripts/sync_tools.py` の同期完了時に `update_seo.py` を自動呼び出しするように連携。ツール追加時にSEOメタデータまでワンクリックで自動更新される体制を確立。
+- **Zero-Dependency・UI完全非破壊の維持**:
+  - CSS、UI、`app.js` には一切変更を加えず、既存の操作感とミニマルダークデザインを100%維持。
 
 ### 第4版 (2026-09-04): バッチファイルのエンコーディング修正（Shift-JIS）および favicon.ico の配置
 - **バッチファイルの文字コード抜本修正**:
