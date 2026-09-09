@@ -1,5 +1,30 @@
 [
   {
+    "id": "lotto-numbers-visualization-tool",
+    "name": "ロト＆ナンバーズ 統合構造解析・出目表可視化ツール",
+    "subtitle": "ロトを「予想」するのではなく「構造を見る」",
+    "category": "その他",
+    "description": "ロト7・ロト6・ミニロト・ナンバーズ3・ナンバーズ4の過去出目データを統合分析し、出現頻度・引っ張り・スライド・未出現スパン・共起ペアなどを直感的に可視化するブラウザ完結型Webツール。",
+    "why": "当選番号の「予想」ではなく、過去データから数字の構造や出現パターン・傾向を客観的に観察・検証できる分析環境を作るため。",
+    "features": [
+      "ロト7/6/ミニロト/ナンバーズ3/4の5種を1つの画面で切り替え分析",
+      "出目表・出現頻度4段階（HOT/GOLD/RECOVERY/COLD）・スライド・未出現スパン可視化",
+      "過去の基準回号に戻って再検証可能なタイムトラベル機能＆Markdown出力対応"
+    ],
+    "github_url": "https://github.com/tk030-lotto/lotto-numbers-visualization-tool",
+    "web_url": "https://tk030-lotto.github.io/lotto-numbers-visualization-tool/",
+    "note_url": "https://note.com/zero_ai_dev/n/ndf9d3ef0a479",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/310744895/rectangle_large_type_2_77f4f02b82eaece8874190984f5221a0.png",
+    "tags": [
+      "データ可視化",
+      "Webツール",
+      "統計・分析",
+      "React"
+    ],
+    "release_date": "2026-09-06",
+    "status": "公開中"
+  },
+  {
     "id": "hikitsuide-miyou-tool",
     "name": "「引き継いでみよう。」",
     "subtitle": "AIを変えても、開発は続けられる",
