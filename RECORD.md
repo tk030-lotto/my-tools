@@ -55,7 +55,7 @@
 | [`scripts/update_seo.py`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/scripts/update_seo.py) | tools.json から index.html の JSON-LD と sitemap.xml を自動生成・同期するスクリプト |
 | [`robots.txt`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/robots.txt) | 検索エンジンのクロール制御・サイトマップURL指定 |
 | [`sitemap.xml`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/sitemap.xml) | 検索エンジン向けサイトマップ（トップページ1URL / lastmod自動同期） |
-| [`記事同期.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/記事同期.bat) | ワンクリック同期バッチ（Shift-JIS / CP932 エンコーディング） |
+| [`記事同期.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/記事同期.bat) | ワンクリック同期＆GitHub自動プッシュバッチ（Shift-JIS / CP932 エンコーディング） |
 | [`サイト確認.bat`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/サイト確認.bat) | ローカルプレビューサーバー起動バッチ（Shift-JIS / CP932 エンコーディング） |
 | [`favicon.ico`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/favicon.ico) | サイトアイコン（32x32 / 16x16 ICO） |
 | [`google0d3408f8f04e8e75.html`](file:///c:/Users/tk030/Desktop/公開ツール一覧サイト/google0d3408f8f04e8e75.html) | Google Search Console サイト所有権確認用HTMLファイル |
@@ -92,11 +92,15 @@
 
 ## 🎨 改修・改善履歴
 
-### 第6版 (2026-09-10): 新着ツール「Image Resizer」の同期とデプロイ
+### 第6版 (2026-09-10): 新着ツール「Image Resizer」の同期とバッチ自動プッシュ機能の追加
 - **新着ツール同期**:
   - 2026-09-10 公開の最新作 **「画像をまとめてリサイズする単機能ツール「Image Resizer」を作った」**（Web版・GitHub連携）を同期（全21件）。
 - **SEO構造化データおよびサイトマップ自動更新**:
   - `index.html` 内の JSON-LD 構造化データ（ItemList）および `sitemap.xml` の `lastmod` を 2026-09-10 に更新。
+- **同期バッチ（記事同期.bat）の自動コミット＆プッシュ化**:
+  - `記事同期.bat` を改修し、スクリプト実行成功後に `git diff` による差分検知を実施。
+  - 差分が存在する場合のみ、`git add`, `git commit`, `git push origin main` を自動実行し、GitHub Pages への自動デプロイまでワンクリックで完結するパイプラインへ高度化。
+  - プロトコル規定に準拠し、CP932 (Shift-JIS) エンコーディングを維持。
 - **GitHub Pages デプロイ**:
   - 変更内容をコミットおよびプッシュし、本番環境への自動デプロイを反映。
 
