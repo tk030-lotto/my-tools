@@ -1,5 +1,24 @@
 [
   {
+    "id": "image-resizer",
+    "name": "画像をまとめてリサイズする単機能ツール「Image Resizer」を作った",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "▼ ブラウザですぐにお使いいただけます（完全無料・サーバー送信なし） https://tk030-lotto.github.io/image-resizer/ 画像をWebサイトに掲載したり、SNSへ投稿したり、メールや資料に添付したりする...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/image-resizer",
+    "web_url": "https://tk030-lotto.github.io/image-resizer/",
+    "note_url": "https://note.com/zero_ai_dev/n/n76d75fcda4f9",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/312204080/rectangle_large_type_2_84927e03df63d119c00256ae2e1869b5.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-10",
+    "status": "公開中"
+  },
+  {
     "id": "lotto-numbers-visualization-tool",
     "name": "ロト＆ナンバーズ 統合構造解析・出目表可視化ツール",
     "subtitle": "ロトを「予想」するのではなく「構造を見る」",
