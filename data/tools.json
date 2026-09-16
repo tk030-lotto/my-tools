@@ -1,5 +1,24 @@
 [
   {
+    "id": "ai-dev-beginner-navigator",
+    "name": "【ツール公開】AI開発初心者お助けナビを公開しました――AIに質問する前の「困った」を整理するローカルツール",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "🔗 Webアプリ（GitHub Pages） : https://tk030-lotto.github.io/ai-dev-beginner-navigator/ AIを使って開発していると、こんなことで困る AIを使ったプログラミング環境...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/ai-dev-beginner-navigator",
+    "web_url": "https://tk030-lotto.github.io/ai-dev-beginner-navigator/",
+    "note_url": "https://note.com/zero_ai_dev/n/ne4c47ee17476",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/314265488/rectangle_large_type_2_d8e7a3dcc9fd58b1660eeb243667d709.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-16",
+    "status": "公開中"
+  },
+  {
     "id": "daily-calculation-too",
     "name": "年齢・日付・期間・時間をまとめて確認できる「日常計算ツール」を作りました",
     "subtitle": "",
