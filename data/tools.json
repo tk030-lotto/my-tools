@@ -19,6 +19,25 @@
     "status": "公開中"
   },
   {
+    "id": "shipguard",
+    "name": "【個人開発】本番公開するのがちょっと怖い。その不安を減らすために「shipguard」を作った",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "Webアプリを作っていて、ある程度完成してくると、別の不安が出てきます。 「これ、本当にこのまま公開して大丈夫かな？」 アプリ自体は動いている。 画面も表示される。 必要な機能も一通り動く。 でも、本番公開の直前になると、コードを書いている...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/shipguard/releases/latest/download/shipguard-v0.1.0.zip",
+    "web_url": "",
+    "note_url": "https://note.com/zero_ai_dev/n/n6e31c1890710",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/314916302/rectangle_large_type_2_25a7854082f3ff03981ab46f2ca93238.png",
+    "tags": [
+      "AI開発",
+      "開発支援"
+    ],
+    "release_date": "2026-09-18",
+    "status": "公開中"
+  },
+  {
     "id": "ai-dev-beginner-navigator",
     "name": "【ツール公開】AI開発初心者お助けナビを公開しました――AIに質問する前の「困った」を整理するローカルツール",
     "subtitle": "",
