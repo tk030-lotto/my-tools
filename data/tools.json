@@ -1,5 +1,24 @@
 [
   {
+    "id": "cost-rate-calculator",
+    "name": "原価率の計算、もっと簡単に。",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "「原価率らくらく計算」を作りました ▼ 原価率らくらく計算（ブラウザで今すぐ使えます・登録不要） https://tk030-lotto.github.io/cost-rate-calculator/ サンプル画像 商品やメニューの価格を決...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/cost-rate-calculator",
+    "web_url": "https://tk030-lotto.github.io/cost-rate-calculator/",
+    "note_url": "https://note.com/zero_ai_dev/n/na0d1bcfa1d54",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/314812039/rectangle_large_type_2_ff7e75c7abdea9e58fa0a575077b5feb.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-18",
+    "status": "公開中"
+  },
+  {
     "id": "ai-dev-beginner-navigator",
     "name": "【ツール公開】AI開発初心者お助けナビを公開しました――AIに質問する前の「困った」を整理するローカルツール",
     "subtitle": "",
