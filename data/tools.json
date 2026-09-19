@@ -1,5 +1,24 @@
 [
   {
+    "id": "discount-rate-calculator",
+    "name": "「50%OFF＋30%OFF」",
+    "subtitle": "は80%OFFじゃない？割引の計算を一目で確認できる「割引率らくらく計算」",
+    "category": "AI開発",
+    "description": "▼ 無料・登録不要ですぐに使えるWebツールはこちら https://tk030-lotto.github.io/discount-rate-calculator/ サンプル画像 買い物をしていると、 「店内50%OFF、さらに商品が30%...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/discount-rate-calculator",
+    "web_url": "https://tk030-lotto.github.io/discount-rate-calculator/",
+    "note_url": "https://note.com/zero_ai_dev/n/n91dbd976f9ee",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/315153266/rectangle_large_type_2_ac1353b38692f18625f128458afab3e5.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-19",
+    "status": "公開中"
+  },
+  {
     "id": "cost-rate-calculator",
     "name": "原価率の計算、もっと簡単に。",
     "subtitle": "",
