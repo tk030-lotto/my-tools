@@ -1,5 +1,24 @@
 [
   {
+    "id": "furima-post-calc",
+    "name": "メルカリの送料、結局どれが一番安い？｜送料だけでなく「資材代」まで含めて比べるツールを作りました",
+    "subtitle": "",
+    "category": "AI開発",
+    "description": "▼ツールのWeb版はこちら（ブラウザですぐに使えます） https://tk030-lotto.github.io/furima-post-calc/ サンプル画像 メルカリなどのフリマアプリで商品が売れたとき、 「これ、どの方法で送るのが...",
+    "why": "",
+    "features": [],
+    "github_url": "https://github.com/tk030-lotto/furima-post-calc",
+    "web_url": "https://tk030-lotto.github.io/furima-post-calc/",
+    "note_url": "https://note.com/zero_ai_dev/n/n3c14c1431477",
+    "eyecatch": "https://assets.st-note.com/production/uploads/images/317024143/rectangle_large_type_2_32e3bb722d1b5e120c8c8df023910baa.png",
+    "tags": [
+      "AI開発",
+      "Webツール"
+    ],
+    "release_date": "2026-09-24",
+    "status": "公開中"
+  },
+  {
     "id": "discount-rate-calculator",
     "name": "「50%OFF＋30%OFF」",
     "subtitle": "は80%OFFじゃない？割引の計算を一目で確認できる「割引率らくらく計算」",
