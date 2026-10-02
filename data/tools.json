@@ -95,15 +95,15 @@
     "status": "公開中"
   },
   {
-    "id": "daily-calculation-too",
+    "id": "daily-calculation-tool",
     "name": "年齢・日付・期間・時間をまとめて確認できる「日常計算ツール」を作りました",
     "subtitle": "",
     "category": "AI開発",
-    "description": "▼ 日常計算ツール（ブラウザですぐに使えます） https://tk030-lotto.github.io/daily-calculation-too サンプル画像 日常生活では、年齢や日付、期間、時間について確認したいことが意外とあります...",
+    "description": "▼ 日常計算ツール（ブラウザですぐに使えます） https://tk030-lotto.github.io/daily-calculation-tool サンプル画像 日常生活では、年齢や日付、期間、時間について確認したいことが意外とあります...",
     "why": "",
     "features": [],
     "github_url": "https://github.com/tk030-lotto/daily-calculation-tool",
-    "web_url": "https://tk030-lotto.github.io/daily-calculation-too/",
+    "web_url": "https://tk030-lotto.github.io/daily-calculation-tool/",
     "note_url": "https://note.com/zero_ai_dev/n/nef1966850a33",
     "eyecatch": "https://assets.st-note.com/production/uploads/images/313814646/rectangle_large_type_2_adfc2b8562b950b0e74b93d21c54cd92.png",
     "tags": [
