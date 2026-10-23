@@ -15,3 +15,12 @@ SKILLS.md
 knowledge/
 RECORD.md
 
+
+# 内部運用ファイル（共通ルール）
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+
+# 開発ドキュメント除外（フェーズ2-B）
+MY_TOOLS_SEO_*.md
+My Tools SEO現状調査指示書.md
